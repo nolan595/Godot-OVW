@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/UI/label_bg.png" type="Texture" id=1]
+[ext_resource path="res://assets/UI/health/white/100-percent.png" type="Texture" id=2]
+
+[node name="Health" type="NinePatchRect"]
+margin_right = 149.0
+margin_bottom = 127.0
+texture = ExtResource( 1 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -54.0
+margin_top = -54.0
+margin_right = 54.0
+margin_bottom = 54.0
+texture = ExtResource( 2 )

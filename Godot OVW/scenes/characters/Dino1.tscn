@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/OVW PNGs/Cal Hero new 1.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/Coin_5.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/Hit_3.wav" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 66.25, 126 )
+
+[node name="Dino" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -20.75, -66 )
+shape = SubResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="Bomb" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Coin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="area_entered" from="." to="." method="_on_Dino_area_entered"]

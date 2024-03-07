@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/Falling/Meteor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Level1.gd" type="Script" id=2]
+[ext_resource path="res://UI/Interface.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Falling/coin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/bg/BG1.png" type="Texture" id=5]
+[ext_resource path="res://assets/UI/touch2start.png" type="Texture" id=6]
+[ext_resource path="res://assets/sounds/Coin_5.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/Hit_3.wav" type="AudioStream" id=8]
+
+[node name="Gameworld" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="BgPlain" type="Sprite" parent="."]
+position = Vector2( 540, 960 )
+texture = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Bomb" parent="." instance=ExtResource( 1 )]
+position = Vector2( -436, 114 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Interface" parent="." instance=ExtResource( 3 )]
+margin_left = 2.0
+margin_top = -2.0
+margin_right = 1082.0
+margin_bottom = 1918.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="coin" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1777, 480 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="coinTimer" type="Timer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 114.0
+margin_top = 484.0
+margin_right = 993.0
+margin_bottom = 1581.0
+texture = ExtResource( 6 )
+
+[node name="negative" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="positive" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="coinTimer" to="." method="_on_coinTimer_timeout"]

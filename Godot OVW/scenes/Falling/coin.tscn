@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/belts/Drop1.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Falling/coin.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 36.5, 32 )
+
+[node name="coin" type="Area2D"]
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 11.5, -13 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 11.2667, -13 )
+scale = Vector2( 0.0666667, 0.0666667 )
+texture = ExtResource( 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_coin_area_entered"]
